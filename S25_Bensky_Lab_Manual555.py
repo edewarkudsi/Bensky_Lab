@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Apr 12 17:20:34 2025
+
+@author: elizabethdewar-kudsi
+"""
+import statistics
+import matplotlib.pyplot as plt
+
+
+data = [10, 12, 15, 18, 20]
+
+# Using the statistics module
+std_dev_stats = statistics.stdev(data)
+
+# Henry wuz here lol
+
+t=[131,131.2,131.6,131.4,131.2,131.2,131.2,131,131,131,130.8,131.2,131,131.2,130.8,130.,131.2,131,131.2,131.4,131.2,131.4,131.6,130.6,130.8,130.8,131,131,131,130.8,131,131,131,131,130.8,130.8,131,131.2,131.2,131.2,131.2,131.4,131.2,130.8,131.2,131.2,131.4,131.2,131,131,130.8,131.4,131.2,130.8,131,131,130.8,130.8,131,131,131.2,130.8,131.2,131.2,131.2,131,131.2,131.4,131,131,131.2,131.2,131.2,131,131,131.2,131.4,131.2,131.4,130.8,131.2,131.2,131,131,130.8,130.8,131.4,131.4,131.4,131.4,131.2,131,131.2,131.2,131.2,131,131,131,130.]
+r=[]
+num=[]
+for x in range(2,len(t)+1):
+    num.append(x)
+    r.append(statistics.stdev(t[:x]))
+    
+
+
+# Create plot
+plt.plot(num, r,"k.")
+
+# Customize plot
+plt.xlabel("number of measurments")
+plt.ylabel("standard deviation")
+
+plt.grid(True)
+# Show plot
+plt.show()
