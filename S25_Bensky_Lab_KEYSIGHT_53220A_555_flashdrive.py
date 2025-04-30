@@ -8,36 +8,31 @@ Created on Wed Apr 23 11:27:24 2025
 
 import statistics
 import matplotlib.pyplot as plt
-import csv
+
+def read_values(file_path):
+    values = []
+    with open(file_path, 'r', encoding='latin1') as file:
+        for line in file:
+            try:
+                values.append(float(line.strip()))
+            except ValueError:
+                continue  # skip any non-numeric lines
+    return values
 
 
-# turn csv file into list
+file_path = '/Users/elizabethdewar-kudsi/Library/CloudStorage/OneDrive-CalPoly/Bensky_Lab/DataLog_20250423_112604.csv'
 
-def csv_to_list(file_path):
-    data_list = []
-    with open(file_path, 'r') as file:
-        csv_reader = csv.reader(file)
-        for row in csv_reader:
-            data_list.append(row)
-    return data_list
+values = read_values(file_path)
 
-
-file_path = 'your_file.csv'  # Replace with the actual path to your CSV file
-
-t = csv_to_list(file_path)
 r = []
 num = []
-for x in range(2, len(t) + 1):
+for x in range(2, len(values) + 1):
     num.append(x)
-    r.append(statistics.stdev(t[:x]))
+    r.append(statistics.stdev(values[:x]))
 
-# Create plot
 plt.plot(num, r, "k.")
-
-# Customize plot
-plt.xlabel("number of measurments")
-plt.ylabel("standard deviation")
-
+plt.xlabel("Number of Measurements")
+plt.ylabel("Standard Deviation")
+plt.xlim([0,1000])
 plt.grid(True)
-# Show plot
 plt.show()
